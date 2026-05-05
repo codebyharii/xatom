@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowUpRight, Database, FileText, MessageCircle, Zap } from 'lucide-react'
 
@@ -92,9 +93,13 @@ export function ProductsGrid() {
           viewport={{ once: true, margin: '-100px' }}
         >
           {products.map((product) => (
+          <Link
+            key={product.id}
+            href={product.id === 'insights' ? '/insights' : '#'}
+            className={product.id === 'insights' ? '' : 'pointer-events-none'}
+          >
             <motion.div
-              key={product.id}
-              className="bg-[#0D0D12] p-12 relative group overflow-hidden"
+              className="bg-[#0D0D12] p-12 relative group overflow-hidden h-full"
               variants={itemVariants}
               whileHover={{ backgroundColor: '#12121A' }}
               transition={{ duration: 0.3 }}
@@ -140,8 +145,8 @@ export function ProductsGrid() {
                 </div>
               </div>
             </motion.div>
-          ))}
-        </motion.div>
+          </Link>
+        ))}
       </div>
     </section>
   )
