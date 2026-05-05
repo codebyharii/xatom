@@ -1,0 +1,43 @@
+'use client'
+
+import { Navbar } from '@/components/layout/Navbar'
+import { Footer } from '@/components/layout/Footer'
+import { motion } from 'framer-motion'
+
+export default function FeaturesPage() {
+  return (
+    <main className="bg-[#060608]">
+      <Navbar />
+
+      {/* Features Hero */}
+      <section className="pt-40 pb-20 px-[5%]">
+        <div className="max-w-[1100px] mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h1 className="font-display text-5xl md:text-6xl font-black mb-6">
+              Explore all <span className="gradient-cyan">4 Products</span>
+            </h1>
+            <p className="text-lg text-[#A09CB8] max-w-[600px] mx-auto">
+              Deep dive into each AI tool and see how they can transform your workflow.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Feature Tabs - Coming Soon */}
+      <section className="py-20 px-[5%]">
+        <div className="max-w-[1100px] mx-auto">
+          <div className="border border-[rgba(255,255,255,0.06)] rounded-[20px] bg-[#16161F] p-20 text-center">
+            <h2 className="font-display text-2xl font-black mb-4">Detailed Features Coming Soon</h2>
+            <p className="text-[#A09CB8]">Each product page with interactive demos and use cases</p>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </main>
+  )
+}
