@@ -1,9 +1,6 @@
-'use client'
-
 import type { Metadata } from 'next'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
-import { motion } from 'framer-motion'
 
 export const metadata: Metadata = {
   title: 'Products - XATOM.IN | Insights, Hire, Chat, Agents',
@@ -24,18 +21,14 @@ export default function FeaturesPage() {
       {/* Features Hero */}
       <section className="pt-40 pb-20 px-[5%]">
         <div className="max-w-[1100px] mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+          <div>
             <h1 className="font-display text-5xl md:text-6xl font-black mb-6">
               Explore all <span className="gradient-cyan">4 Products</span>
             </h1>
             <p className="text-lg text-[#A09CB8] max-w-[600px] mx-auto">
               Deep dive into each AI tool and see how they can transform your workflow.
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 

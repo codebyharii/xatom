@@ -59,7 +59,7 @@ export function Testimonials() {
         <div className="mb-6 overflow-hidden">
           <motion.div
             className="flex gap-6"
-            animate={{ x: [0, -50%] }}
+            animate={{ x: ['0%', '-50%'] }}
             transition={{
               duration: 40,
               repeat: Infinity,
@@ -98,7 +98,7 @@ export function Testimonials() {
         <div className="overflow-hidden">
           <motion.div
             className="flex gap-6"
-            animate={{ x: [-50%, 0] }}
+            animate={{ x: ['-50%', '0%'] }}
             transition={{
               duration: 35,
               repeat: Infinity,

@@ -1,10 +1,7 @@
-'use client'
-
 import type { Metadata } from 'next'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { Pricing } from '@/components/marketing/Pricing'
-import { motion } from 'framer-motion'
 
 export const metadata: Metadata = {
   title: 'Pricing - XATOM.IN | Free, Pro, Business Plans',
@@ -25,18 +22,14 @@ export default function PricingPage() {
       {/* Pricing Hero */}
       <section className="pt-40 pb-20 px-[5%]">
         <div className="max-w-[1100px] mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+          <div>
             <h1 className="font-display text-5xl md:text-6xl font-black mb-6">
               Simple <span className="gradient-purple">Pricing</span>
             </h1>
             <p className="text-lg text-[#A09CB8] max-w-[600px] mx-auto">
               Choose the perfect plan for your team. All plans include a 14-day free trial.
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 

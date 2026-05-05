@@ -1,13 +1,46 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import ReactMarkdown from 'react-markdown'
 
 interface StreamingMessageProps {
   content: string
 }
 
 export default function StreamingMessage({ content }: StreamingMessageProps) {
+  const renderContent = () => {
+    const lines = content.split('\n')
+
+    return lines.map((line, index) => {
+      const trimmed = line.trim()
+
+      if (!trimmed) {
+        return <div key={index} className="h-2" />
+      }
+
+      if (/^#{1,3}\s+/.test(trimmed)) {
+        return (
+          <p key={index} className="mb-2 font-semibold text-white">
+            {trimmed.replace(/^#{1,3}\s+/, '')}
+          </p>
+        )
+      }
+
+      if (/^[-*]\s+/.test(trimmed)) {
+        return (
+          <li key={index} className="ml-5 list-disc mb-1">
+            {trimmed.replace(/^[-*]\s+/, '')}
+          </li>
+        )
+      }
+
+      return (
+        <p key={index} className="mb-2">
+          {trimmed}
+        </p>
+      )
+    })
+  }
+
   return (
     <div className="flex justify-start">
       <motion.div
@@ -17,29 +50,8 @@ export default function StreamingMessage({ content }: StreamingMessageProps) {
         className="max-w-md"
       >
         <div className="px-4 py-2 rounded-lg bg-bg border border-border/30 text-text">
-          <div className="text-sm leading-relaxed prose prose-invert max-w-none">
-            <ReactMarkdown
-              components={{
-                p: ({ children }) => <p className="mb-2">{children}</p>,
-                strong: ({ children }) => <strong className="font-bold">{children}</strong>,
-                code: ({ children }) => (
-                  <code className="bg-bg/50 px-2 py-1 rounded text-xs font-mono">
-                    {children}
-                  </code>
-                ),
-                pre: ({ children }) => (
-                  <pre className="bg-bg/50 p-3 rounded-lg overflow-x-auto mb-2 text-xs">
-                    {children}
-                  </pre>
-                ),
-                ul: ({ children }) => (
-                  <ul className="list-disc list-inside mb-2 space-y-1">{children}</ul>
-                ),
-                li: ({ children }) => <li>{children}</li>,
-              }}
-            >
-              {content}
-            </ReactMarkdown>
+          <div className="text-sm leading-relaxed prose prose-invert max-w-none space-y-1">
+            {renderContent()}
           </div>
 
           {/* Typing Indicator */}

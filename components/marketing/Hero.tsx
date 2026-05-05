@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 
 export function Hero() {
@@ -62,12 +63,18 @@ export function Hero() {
 
           {/* CTA Buttons */}
           <motion.div variants={itemVariants} className="flex flex-col md:flex-row gap-4 mb-16">
-            <button className="px-8 py-3 bg-[#7B5EFF] text-white text-base font-semibold rounded-[10px] hover:bg-[#9B7FFF] transition-all duration-200 hover:shadow-purple hover:-translate-y-0.5 active:scale-95">
+            <Link
+              href="/features"
+              className="px-8 py-3 bg-[#7B5EFF] text-white text-base font-semibold rounded-[10px] hover:bg-[#9B7FFF] transition-all duration-200 hover:shadow-purple hover:-translate-y-0.5 active:scale-95 inline-flex items-center justify-center"
+            >
               Start building free →
-            </button>
-            <button className="px-8 py-3 border border-[rgba(255,255,255,0.10)] text-white text-base font-semibold rounded-[10px] hover:bg-[rgba(255,255,255,0.04)] transition-all duration-200">
+            </Link>
+            <Link
+              href="/pricing"
+              className="px-8 py-3 border border-[rgba(255,255,255,0.10)] text-white text-base font-semibold rounded-[10px] hover:bg-[rgba(255,255,255,0.04)] transition-all duration-200 inline-flex items-center justify-center"
+            >
               Watch demo ■
-            </button>
+            </Link>
           </motion.div>
 
           {/* Stats Bar */}

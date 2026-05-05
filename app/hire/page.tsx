@@ -6,6 +6,7 @@ import ResumeUploader from '@/components/hire/ResumeUploader'
 import CandidatesList from '@/components/hire/CandidatesList'
 import RankingPanel from '@/components/hire/RankingPanel'
 import JobDescriptionInput from '@/components/hire/JobDescriptionInput'
+import { extractCandidateName, extractResumeData, inferResumeTextFromFileName, parseResumeFile, scoreCandidate } from '@/lib/resume-parser'
 
 interface Candidate {
   id: string
@@ -14,6 +15,7 @@ interface Candidate {
   phone: string
   fileName: string
   uploadedAt: number
+  profileText?: string
   score?: number
   reasoning?: string
   skills?: string[]
@@ -28,32 +30,52 @@ export default function HirePage() {
   const [jobDescription, setJobDescription] = useState('')
   const [ranking, setRanking] = useState(false)
 
-  const handleResumeUpload = (file: File) => {
+  const handleResumeUpload = async (file: File) => {
+    const profileText = await parseResumeFile(file)
+    const parsedResume = extractResumeData(profileText)
+    const candidateName = parsedResume.name !== 'Unknown' ? parsedResume.name : extractCandidateName(profileText)
+
     const newCandidate: Candidate = {
       id: Math.random().toString(36).substr(2, 9),
-      name: file.name.replace('.pdf', '').replace('.docx', ''),
-      email: '',
-      phone: '',
+      name: candidateName || file.name.replace(/\.[^/.]+$/, ''),
+      email: parsedResume.email,
+      phone: parsedResume.phone,
       fileName: file.name,
       uploadedAt: Date.now(),
+      profileText,
+      skills: parsedResume.skills,
+      experience: parsedResume.experience,
+      education: parsedResume.education,
       status: 'pending',
     }
 
     setCandidates(prev => [newCandidate, ...prev])
   }
 
-  const handleBulkUpload = (files: File[]) => {
-    const newCandidates: Candidate[] = files.map(file => ({
-      id: Math.random().toString(36).substr(2, 9),
-      name: file.name.replace('.pdf', '').replace('.docx', ''),
-      email: '',
-      phone: '',
-      fileName: file.name,
-      uploadedAt: Date.now(),
-      status: 'pending',
-    }))
+  const handleBulkUpload = async (files: File[]) => {
+    const parsedCandidates = await Promise.all(
+      files.map(async (file) => {
+        const profileText = await parseResumeFile(file)
+        const parsedResume = extractResumeData(profileText)
+        const candidateName = parsedResume.name !== 'Unknown' ? parsedResume.name : extractCandidateName(profileText)
 
-    setCandidates(prev => [...newCandidates, ...prev])
+        return {
+          id: Math.random().toString(36).substr(2, 9),
+          name: candidateName || file.name.replace(/\.[^/.]+$/, ''),
+          email: parsedResume.email,
+          phone: parsedResume.phone,
+          fileName: file.name,
+          uploadedAt: Date.now(),
+          profileText,
+          skills: parsedResume.skills,
+          experience: parsedResume.experience,
+          education: parsedResume.education,
+          status: 'pending' as const,
+        }
+      })
+    )
+
+    setCandidates(prev => [...parsedCandidates, ...prev])
   }
 
   const handleRankCandidates = async () => {
@@ -61,20 +83,29 @@ export default function HirePage() {
 
     setRanking(true)
 
-    // Simulate ranking process
-    await new Promise(resolve => setTimeout(resolve, 2000))
+    // Simulate processing while the scoring engine evaluates each candidate.
+    await new Promise(resolve => setTimeout(resolve, 900))
 
-    // Update all candidates with scores
+    // Update all candidates with scored profiles
     setCandidates(prev =>
-      prev.map((candidate, idx) => ({
-        ...candidate,
-        score: Math.floor(Math.random() * 100) + 50,
-        reasoning: `Strong match for the role. Relevant experience and skills align with job requirements.`,
-        status: 'ranked',
-        skills: ['JavaScript', 'React', 'Node.js', 'PostgreSQL'],
-        experience: '5+ years in software development',
-        education: 'Bachelor in Computer Science',
-      }))
+      prev.map(candidate => {
+        const resumeText = candidate.profileText || inferResumeTextFromFileName(candidate.fileName, candidate.name)
+        const parsedResume = extractResumeData(resumeText)
+        const scoring = scoreCandidate(parsedResume, jobDescription)
+
+        return {
+          ...candidate,
+          name: parsedResume.name !== 'Unknown' ? parsedResume.name : candidate.name,
+          email: parsedResume.email,
+          phone: parsedResume.phone,
+          score: scoring.score,
+          reasoning: scoring.reasoning,
+          status: 'ranked',
+          skills: parsedResume.skills,
+          experience: parsedResume.experience,
+          education: parsedResume.education,
+        }
+      })
     )
 
     setRanking(false)
@@ -201,7 +232,7 @@ export default function HirePage() {
                 <CandidatesList
                   candidates={candidates}
                   activeCandidate={activeCandidate}
-                  onSelectCandidate={setActiveCandidate}
+                    onSelectCandidate={(candidate) => setActiveCandidate(candidate)}
                   onDeleteCandidate={handleDeleteCandidate}
                 />
               </div>
