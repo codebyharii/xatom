@@ -92,11 +92,15 @@ export function ProductsGrid() {
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
         >
-          {products.map((product) => (
+          {products.map((product) => {
+          const isClickable = product.id === 'insights' || product.id === 'hire'
+          const href = product.id === 'insights' ? '/insights' : product.id === 'hire' ? '/hire' : '#'
+
+          return (
           <Link
             key={product.id}
-            href={product.id === 'insights' ? '/insights' : '#'}
-            className={product.id === 'insights' ? '' : 'pointer-events-none'}
+            href={href}
+            className={isClickable ? '' : 'pointer-events-none'}
           >
             <motion.div
               className="bg-[#0D0D12] p-12 relative group overflow-hidden h-full"
@@ -146,7 +150,9 @@ export function ProductsGrid() {
               </div>
             </motion.div>
           </Link>
-        ))}
+          )
+        })}
+        </motion.div>
       </div>
     </section>
   )
