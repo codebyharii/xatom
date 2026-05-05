@@ -1,9 +1,21 @@
 'use client'
 
+import type { Metadata } from 'next'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { Pricing } from '@/components/marketing/Pricing'
 import { motion } from 'framer-motion'
+
+export const metadata: Metadata = {
+  title: 'Pricing - XATOM.IN | Free, Pro, Business Plans',
+  description: 'Simple, transparent pricing. Start free, upgrade as you grow. No credit card required. 14-day free trial.',
+  keywords: ['Pricing', 'Plans', 'Free Trial', 'Enterprise', 'SaaS Pricing'],
+  openGraph: {
+    title: 'Pricing - XATOM.IN',
+    description: 'Simple and transparent pricing for all teams',
+    type: 'website',
+  },
+}
 
 export default function PricingPage() {
   return (

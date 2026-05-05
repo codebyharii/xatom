@@ -1,8 +1,20 @@
 'use client'
 
+import type { Metadata } from 'next'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { motion } from 'framer-motion'
+
+export const metadata: Metadata = {
+  title: 'Products - XATOM.IN | Insights, Hire, Chat, Agents',
+  description: 'Explore all 4 XATOM products. Deep dive into Insights, Hire, Chat, and Agents with interactive demos and use cases.',
+  keywords: ['XATOM Products', 'Features', 'Demos', 'Use Cases', 'AI Tools'],
+  openGraph: {
+    title: 'XATOM Products',
+    description: 'Four powerful AI products in one platform',
+    type: 'website',
+  },
+}
 
 export default function FeaturesPage() {
   return (

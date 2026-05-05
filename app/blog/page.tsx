@@ -1,8 +1,21 @@
 'use client'
 
+import type { Metadata } from 'next'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
+
+export const metadata: Metadata = {
+  title: 'Blog & Documentation - XATOM.IN',
+  description: 'Learn how to build with XATOM. Guides, tutorials, case studies, and best practices from the community.',
+  keywords: ['Blog', 'Documentation', 'Guides', 'Tutorials', 'Case Studies'],
+  openGraph: {
+    title: 'Blog & Docs - XATOM.IN',
+    description: 'Learn and master XATOM',
+    type: 'website',
+  },
+}
 
 const articles = [
   {

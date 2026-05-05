@@ -5,6 +5,7 @@ import { LogoMarquee } from '@/components/marketing/LogoMarquee'
 import { ProductsGrid } from '@/components/marketing/ProductsGrid'
 import { FeatureStrip } from '@/components/marketing/FeatureStrip'
 import { HowItWorks } from '@/components/marketing/HowItWorks'
+import { Testimonials } from '@/components/marketing/Testimonials'
 import { Pricing } from '@/components/marketing/Pricing'
 import { CTASection } from '@/components/marketing/CTASection'
 
@@ -28,6 +29,9 @@ export default function Home() {
 
       {/* How It Works */}
       <HowItWorks />
+
+      {/* Testimonials */}
+      <Testimonials />
 
       {/* Pricing */}
       <Pricing />
