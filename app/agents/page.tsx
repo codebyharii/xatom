@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Footer } from '@/components/layout/Footer'
 import { Navbar } from '@/components/layout/Navbar'
+import AgentList from '@/components/agents/AgentList'
+import AgentBuilder from '@/components/agents/AgentBuilder'
 import { ArrowUpRight, Bot, CalendarCheck2, Layers3, PlayCircle, Workflow } from 'lucide-react'
 
 export const metadata: Metadata = {
@@ -118,6 +120,11 @@ export default function AgentsPage() {
               </div>
             </div>
           </div>
+        </div>
+        
+        <div className="max-w-[1180px] mx-auto grid gap-6 lg:grid-cols-2 mt-10">
+          <AgentList />
+          <AgentBuilder />
         </div>
       </section>
 
