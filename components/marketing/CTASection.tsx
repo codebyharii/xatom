@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 
 export function CTASection() {
@@ -24,12 +25,18 @@ export function CTASection() {
 
           {/* CTAs */}
           <div className="flex flex-col md:flex-row gap-4 justify-center mb-6">
-            <button className="px-8 py-3 bg-[#7B5EFF] text-white font-semibold rounded-[10px] hover:bg-[#9B7FFF] transition-all duration-200 hover:shadow-purple hover:-translate-y-0.5">
+            <Link
+              href="/sign-up"
+              className="px-8 py-3 bg-[#7B5EFF] text-white font-semibold rounded-[10px] hover:bg-[#9B7FFF] transition-all duration-200 hover:shadow-purple hover:-translate-y-0.5 inline-flex items-center justify-center"
+            >
               Start building free →
-            </button>
-            <button className="px-8 py-3 border border-[rgba(255,255,255,0.10)] text-white font-semibold rounded-[10px] hover:bg-[rgba(255,255,255,0.04)] transition-all duration-200">
+            </Link>
+            <Link
+              href="/blog"
+              className="px-8 py-3 border border-[rgba(255,255,255,0.10)] text-white font-semibold rounded-[10px] hover:bg-[rgba(255,255,255,0.04)] transition-all duration-200 inline-flex items-center justify-center"
+            >
               View documentation
-            </button>
+            </Link>
           </div>
 
           {/* Bottom Info */}
