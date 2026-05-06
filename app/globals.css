@@ -4,23 +4,23 @@
 
 /* Global Variables */
 :root {
-  --bg: #060608;
-  --bg2: #0D0D12;
-  --bg3: #12121A;
-  --surface: #16161F;
-  --surface2: #1C1C28;
-  --border: rgba(255, 255, 255, 0.06);
-  --border2: rgba(255, 255, 255, 0.10);
-  --purple: #7B5EFF;
-  --purple2: #9B7FFF;
-  --cyan: #00D4FF;
-  --cyan2: #00F0FF;
-  --green: #00E5A0;
-  --amber: #FFB347;
-  --coral: #FF6B6B;
-  --text: #F0EFFE;
-  --text2: #A09CB8;
-  --text3: #5A5670;
+  --bg: #faf9f9;
+  --bg2: #f4f3f3;
+  --bg3: #eeeeee;
+  --surface: #ffffff;
+  --surface2: #e8e8e8;
+  --border: rgba(64, 73, 68, 0.16);
+  --border2: rgba(64, 73, 68, 0.24);
+  --purple: #174d38;
+  --purple2: #003524;
+  --cyan: #8f4a48;
+  --cyan2: #ffb3af;
+  --green: #174d38;
+  --amber: #693534;
+  --coral: #e79f9c;
+  --text: #1a1c1c;
+  --text2: #404944;
+  --text3: #707973;
   --nav-h: 68px;
   --section-pad: 100px;
   --container: 1100px;
@@ -47,7 +47,7 @@ body {
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-syne), sans-serif;
+  font-family: var(--font-inter), sans-serif;
   font-weight: 700;
   letter-spacing: -1px;
 }
@@ -83,7 +83,7 @@ small {
 
 code, pre {
   font-family: var(--font-mono), monospace;
-  color: #00E5A0;
+  color: #174d38;
 }
 
 /* Scrollbar */
@@ -283,7 +283,7 @@ code, pre {
   border-radius: 10px;
   font-size: 15px;
   font-weight: 600;
-  font-family: var(--font-syne), sans-serif;
+  font-family: var(--font-inter), sans-serif;
   cursor: pointer;
   transition: all 0.3s ease;
   border: none;
@@ -359,18 +359,52 @@ code, pre {
 
 /* Gradient Text */
 .gradient-purple {
-  background: linear-gradient(135deg, #7B5EFF, #C4B5FD);
+  background: linear-gradient(135deg, #174d38, #346851);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .gradient-cyan {
-  background: linear-gradient(135deg, #00D4FF, #00F0FF);
+  background: linear-gradient(135deg, #8f4a48, #e79f9c);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* Theme Overrides for existing utility classes */
+[class*="bg-[#060608]"] { background-color: var(--bg) !important; }
+[class*="bg-[#0D0D12]"] { background-color: var(--surface) !important; }
+[class*="bg-[#16161F]"] { background-color: var(--bg2) !important; }
+[class*="bg-[#1C1C28]"] { background-color: var(--bg3) !important; }
+[class*="text-[#F0EFFE]"] { color: var(--text) !important; }
+[class*="text-[#A09CB8]"] { color: var(--text2) !important; }
+[class*="text-[#5A5670]"] { color: var(--text3) !important; }
+[class*="bg-[#7B5EFF]"] { background-color: var(--purple) !important; }
+[class*="text-[#7B5EFF]"] { color: var(--purple) !important; }
+[class*="border-[#7B5EFF]"] { border-color: var(--purple) !important; }
+[class*="bg-[#9B7FFF]"] { background-color: var(--purple2) !important; }
+[class*="bg-[#00D4FF]"] { background-color: var(--cyan) !important; }
+[class*="text-[#00D4FF]"] { color: var(--cyan) !important; }
+[class*="bg-[#00E5A0]"] { background-color: var(--green) !important; }
+[class*="text-[#00E5A0]"] { color: var(--green) !important; }
+[class*="bg-[#FFB347]"] { background-color: var(--amber) !important; }
+[class*="text-[#FFB347]"] { color: var(--amber) !important; }
+[class*="bg-[#FF6B6B]"] { background-color: var(--coral) !important; }
+[class*="text-[#FF6B6B]"] { color: var(--coral) !important; }
+[class*="border-[rgba(255,255,255,0.06)]"] { border-color: rgba(64, 73, 68, 0.16) !important; }
+[class*="border-[rgba(255,255,255,0.10)]"] { border-color: rgba(64, 73, 68, 0.24) !important; }
+[class*="border-white/10"] { border-color: rgba(64, 73, 68, 0.16) !important; }
+[class*="border-white/20"] { border-color: rgba(64, 73, 68, 0.2) !important; }
+[class*="border-white/40"] { border-color: rgba(64, 73, 68, 0.24) !important; }
+[class*="border-white/50"] { border-color: rgba(64, 73, 68, 0.26) !important; }
+[class*="bg-white/3"] { background-color: rgba(255, 255, 255, 0.92) !important; }
+[class*="bg-white/4"] { background-color: rgba(255, 255, 255, 0.92) !important; }
+[class*="bg-white/5"] { background-color: rgba(255, 255, 255, 0.94) !important; }
+[class*="bg-white/6"] { background-color: rgba(255, 255, 255, 0.94) !important; }
+[class*="bg-white/8"] { background-color: rgba(255, 255, 255, 0.95) !important; }
+[class*="bg-white/10"] { background-color: rgba(255, 255, 255, 0.96) !important; }
+[class*="bg-white/20"] { background-color: rgba(255, 255, 255, 0.98) !important; }
 
 /* Responsive */
 @media (max-width: 768px) {

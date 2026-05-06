@@ -20,7 +20,7 @@ export function ScrollProgress() {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 h-1 bg-gradient-to-r from-[#7B5EFF] to-[#00D4FF] z-50"
+      className="fixed top-0 left-0 h-1 bg-gradient-to-r from-[#174d38] to-[#8f4a48] z-50"
       style={{
         width: `${progress}%`,
       }}

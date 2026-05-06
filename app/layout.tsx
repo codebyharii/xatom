@@ -1,17 +1,11 @@
 import type { Metadata } from 'next'
-import { Syne, Inter, JetBrains_Mono } from 'next/font/google'
+import { Inter, JetBrains_Mono } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
 import { GlowOrbs } from '@/components/effects/GlowOrbs'
 import { NoiseTexture } from '@/components/effects/NoiseTexture'
 import { ScrollProgress } from '@/components/effects/ScrollProgress'
 import { GoogleAnalytics } from '@/components/providers/GoogleAnalytics'
-
-const syne = Syne({
-  subsets: ['latin'],
-  weight: ['400', '600', '700', '800'],
-  variable: '--font-syne',
-})
 
 const inter = Inter({
   subsets: ['latin'],
@@ -85,7 +79,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${syne.variable} ${inter.variable} ${mono.variable} scroll-smooth`}>
+    <html lang="en" className={`${inter.variable} ${mono.variable} scroll-smooth`}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -111,7 +105,7 @@ export default function RootLayout({
           </>
         )}
       </head>
-      <body className="bg-[#060608] text-[#F0EFFE] font-body">
+      <body className="bg-[#faf9f9] text-[#1a1c1c] font-body">
         <ScrollProgress />
         <GlowOrbs />
         <NoiseTexture />

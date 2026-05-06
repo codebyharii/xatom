@@ -5,7 +5,7 @@ export function GlowOrbs() {
       <div
         className="fixed -top-40 -right-40 w-96 h-96 rounded-full pointer-events-none z-0"
         style={{
-          background: 'radial-gradient(circle, rgba(123, 94, 255, 0.18) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(23, 77, 56, 0.16) 0%, transparent 70%)',
           filter: 'blur(120px)',
           opacity: 0.15,
         }}
@@ -15,7 +15,7 @@ export function GlowOrbs() {
       <div
         className="fixed -bottom-40 -left-40 w-96 h-96 rounded-full pointer-events-none z-0"
         style={{
-          background: 'radial-gradient(circle, rgba(0, 212, 255, 0.18) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(143, 74, 72, 0.16) 0%, transparent 70%)',
           filter: 'blur(120px)',
           opacity: 0.12,
         }}
@@ -25,7 +25,7 @@ export function GlowOrbs() {
       <div
         className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full pointer-events-none z-0"
         style={{
-          background: 'radial-gradient(circle, rgba(123, 94, 255, 0.15) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(231, 159, 156, 0.16) 0%, transparent 70%)',
           filter: 'blur(120px)',
           opacity: 0.12,
         }}
